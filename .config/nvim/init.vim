@@ -1,3 +1,5 @@
+
+execute pathogen#infect()
 syntax on
 set mouse=a
 set tabstop=4
@@ -31,12 +33,12 @@ set sw=4
 set expandtab
 set autoindent
 
-call plug#begin('~/.config/nvim/data/plugged')
+"call plug#begin('~/.config/nvim/data/plugged')
 
-Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'scrooloose/nerdtree'
+"Plug 'Valloric/YouCompleteMe'
 
-call plug#end()
+"call plug#end()
 
 "augroup nerdtree_open
 "    autocmd!
@@ -47,3 +49,32 @@ map ee gT
 
 imap jk <Esc>
 nnoremap nt :NERDTreeToggle<CR>
+
+nnoremap qq :YcmCompleter GetDoc<CR>
+
+nnoremap <C-a> 
+
+" block indentation
+function! Komment()
+  if getline(".") =~ '\/\*'
+    let hls=@/
+    s/^\/\*//
+    s/*\/$//
+    let @/=hls
+  else
+    let hls=@/
+    s/^/\/*/
+    s/$/*\//
+    let @/=hls
+  endif
+endfunction
+map K :call Komment()<CR>
+
+
+set termguicolors     " enable true colors support
+let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
+
