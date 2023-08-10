@@ -47,6 +47,11 @@ set autoindent
 map rr gt
 map ee gT
 
+
+" remap number augmentation
+:nnoremap <A-a> <C-a>
+:nnoremap <A-x> <C-x>
+
 imap jk <Esc>
 nnoremap nt :NERDTreeToggle<CR>
 
